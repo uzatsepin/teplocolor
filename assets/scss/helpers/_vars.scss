@@ -1,0 +1,44 @@
+$mainGray: #F6F8FA;
+$mainBlack: #1C1C29;
+$mainGreen: #4CA750;
+$darkGreen: #518257;
+$lightGreen: #E5F0E9;
+
+.popup-anim-enter-active {
+    transition: all 250ms ease-in-out;
+}
+.popup-anim-leave-active {
+    transition: all 250ms ease-in-out;
+}
+.popup-anim-enter, .popup-anim-leave-to {
+    opacity: 0;
+}
+
+
+*::-webkit-scrollbar {
+    width: 4px;
+    border-radius: 4px;
+    margin: 15px;
+    background: transparent;
+}
+
+*::-webkit-scrollbar-track {
+    background: #EBEEF5;
+}
+
+*::-webkit-scrollbar-track:hover {
+    background: #E1E4EB;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: $mainGreen;
+    border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: #3F3F3F;
+}
+
+*::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
