@@ -1,0 +1,35 @@
+# robots.txt for teplocolour.ru
+
+# Allow all good bots
+User-agent: *
+Allow: /
+
+# Crawl-delay settings
+Crawl-delay: 10
+
+# Important directories to allow
+Allow: /images/
+Allow: /assets/
+Allow: /public/
+
+# Block sensitive areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /cgi-bin/
+Disallow: /*?*
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /tmp/
+Disallow: /temp/
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 5
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 5
+
+# Sitemap
+Sitemap: https://teplocolour.ru/sitemap.xml

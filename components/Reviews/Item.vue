@@ -4,19 +4,24 @@
             <div class="ReviewItem__rating-star fill" v-for="i in 5" :key="i"></div>
         </div>
         <div class="ReviewItem__text">
-            Отличное качество услуг! Заказывали лазерную резку и гибку металла – все было выполнено точно в срок. Результатом довольны, будем обращаться снова.
+            {{review?.text}}
         </div>
         <div class="ReviewItem__person">
             <div class="ReviewItem__person-img">
-                <NuxtImg src="https://static.vecteezy.com/system/resources/thumbnails/020/630/648/small/retro-illustration-man-thumb-up-vector.jpg" alt="Person"/>
+                <NuxtImg :src="review?.photo" alt="TeploColour отзывы клиентов"/>
             </div>
-            <div class="ReviewItem__person-name">Александр П.</div>
+            <div class="ReviewItem__person-name">{{review?.name}}</div>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-
+defineProps({
+    review: {
+        type: Object,
+        required: true
+    }
+})
 </script>
 
 <style scoped lang="scss">
@@ -56,6 +61,7 @@
         color: $mainBlack;
         border-bottom: 1px solid #DADAE0;
         padding-bottom: 16px;
+        min-height: 157px;
     }
 
     &__person {
@@ -77,6 +83,12 @@
             @media screen and (max-width: 767px) {
                 width: 48px;
                 height: 48px;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
         }
 

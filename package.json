@@ -12,8 +12,10 @@
   "dependencies": {
     "@nuxt/fonts": "^0.10.0",
     "@nuxt/image": "^1.8.1",
+    "@nuxtjs/seo": "^2.0.0-rc.23",
     "gsap": "^3.12.5",
     "nuxt": "^3.13.0",
+    "nuxt-swiper": "^2.0.0",
     "vue": "latest",
     "vue-router": "latest"
   },

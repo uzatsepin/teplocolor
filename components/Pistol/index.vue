@@ -1,6 +1,6 @@
 <template>
     <div class="pistol" ref="pistolElement">
-        <NuxtImg src="/images/pistol.png" width="250" height="400" alt="Teplocolor main image color" />
+        <NuxtImg src="/images/pistol.png" width="250" height="400" alt="TeploColour main image color" />
     </div>
 </template>
 

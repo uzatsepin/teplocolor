@@ -1,6 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
+  build: {
+    transpile: ['swiper']
+  },
+  site: {
+    url: 'https://teplocolour.ru',
+    name: 'TeploColour - Порошковая покраска',
+    description: 'Профессиональная порошковая покраска металлических изделий в Москве. Качественное покрытие, доступные цены, гарантия на работы.',
+    defaultLocale: 'ru',
+    identity: {
+      type: 'Organization',
+    },
+    twitter: '@teplocolour',
+  },
   devtools: { enabled: true },
   css: ['~/assets/scss/main.scss'],
   vite: {
@@ -13,7 +26,7 @@ export default defineNuxtConfig({
       }
     }
   },
-  modules: ['@nuxt/fonts', '@nuxt/image'],
+  modules: ['@nuxt/fonts', '@nuxt/image', 'nuxt-swiper', '@nuxtjs/seo'],
   fonts: {
     families: [
       {

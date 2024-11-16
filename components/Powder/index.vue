@@ -1,14 +1,14 @@
 <template>
-    <section class="powder" ref="powder">
+    <section class="powder" ref="powder" id="powder">
         <div class="powder__container">
             <h2 class="powder__title" ref="powderTitle">Порошковая покраска</h2>
 
             <div class="powder__content">
                 <div class="powder__content-img" ref="powderContentImg">
-                    <NuxtImg src="/images/powder-image.jpg" width="520" height="450" alt="TeploColor – Порошковая покраска"/>
+                    <NuxtImg src="/images/powder-image.jpg" width="520" height="450" alt="TeploColour – Порошковая покраска"/>
                 </div>
                 <div class="powder__content-text" ref="powderContentText">
-                    <h3 class="powder__content-text-title">Порошковая покраска — надежное и долговечное покрытие от Teplo<span>Color</span></h3>
+                    <h3 class="powder__content-text-title">Порошковая покраска — надежное и долговечное покрытие от Teplo<span>Colour</span></h3>
                     <p class="powder__content-text-descr">
                         <span>Почему порошковая покраска?</span>
                         Это современная технология, которая обеспечивает прочное защитное и декоративное покрытие. Порошковая покраска
@@ -36,7 +36,7 @@ import { onMounted, ref } from 'vue';
 const powderTitle = ref(null);
 const powderContentText = ref(null);
 const powderContentImg = ref(null);
-const powderItems = ref(null); // Ссылка на контейнер с элементами PowderItem
+const powderItems = ref(null);
 
 onMounted(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -61,13 +61,11 @@ onMounted(() => {
         observer.observe(powderContentImg.value);
     }
 
-    // Наблюдаем за элементами PowderItem
     if (powderItems.value) {
-        const items = powderItems.value.querySelectorAll('.PowderItem'); // Получаем все элементы
+        const items = (powderItems.value as HTMLElement).querySelectorAll('.PowderItem');
         items.forEach((item, index) => {
             observer.observe(item);
-            // Добавляем задержку для каждого элемента
-            item.style.transitionDelay = `${index * 0.2}s`; // 0.2s задержка для каждого следующего элемента
+            (item as HTMLElement).style.transitionDelay = `${index * 0.2}s`;
         });
     }
 });

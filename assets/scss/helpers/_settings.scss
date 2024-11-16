@@ -1,5 +1,9 @@
 @import "./_vars.scss";
 
+* {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Cygre', sans-serif;
     font-weight: 400;

@@ -1,55 +1,73 @@
 <template>
-    <section class="choose" ref="choose">
+    <section class="choose" ref="choose" id="choose" itemscope itemtype="http://schema.org/ItemList">
         <div class="choose__container">
-            <h2 class="choose__title" ref="chooseTitle">Почему нас выбирают?</h2>
+            <h2 class="choose__title" ref="chooseTitle" itemprop="name">Почему нас выбирают?</h2>
         </div>
         <div class="choose__content">
             <div class="choose__content-text" ref="chooseText">
-                <h3 class="choose__content-title">Добавьте тепла и цвета своим изделиям вместе с Teplo<span>Color</span>!</h3>
-                <p class="choose__content-descr">Мы обеспечиваем долговечность, эстетическую привлекательность и защиту ваших изделий,
-                    используя широкий спектр цветовых решений и материалов.</p>
+                <h3 class="choose__content-title" itemprop="description">
+                    Добавьте тепла и цвета своим изделиям вместе с Teplo<span>Colour</span>!
+                </h3>
+                <p class="choose__content-descr">
+                    Мы обеспечиваем долговечность, эстетическую привлекательность и защиту ваших изделий,
+                    используя широкий спектр цветовых решений и материалов.
+                </p>
             </div>
 
-            <div class="choose__content-items" ref="chooseItems">
-                <ChooseItem
+            <div class="choose__content-items" ref="chooseItems" role="list">
+                <div itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                    <ChooseItem
                         text="Индивидуальный подход"
                         sub="Подбираем оптимальные решения под ваши потребности."
                         image="/images/icons/individual-icon.svg"
-                />
-                <ChooseItem
+                        itemprop="item"
+                    />
+                    <meta itemprop="position" content="1" />
+                </div>
+                <div itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                    <ChooseItem
                         text="Синергия с teplogarden"
                         sub="Идеальная совместимость и интеграция с продукцией основного бренда."
                         image="/images/icons/individual-icon.svg"
-                />
-                <ChooseItem
+                        itemprop="item"
+                    />
+                    <meta itemprop="position" content="2" />
+                </div>
+                <div itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                    <ChooseItem
                         text="Экологические материалы"
                         sub="Заботимся об окружающей среде и вашем здоровье."
                         image="/images/icons/eco-icon.svg"
-                />
-                <ChooseItem
+                        itemprop="item"
+                    />
+                    <meta itemprop="position" content="3" />
+                </div>
+                <div itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                    <ChooseItem
                         text="Соблюдение сроков"
                         sub="Ценим ваше время и всегда выполняем работу вовремя."
                         image="/images/icons/time-icon.svg"
-                />
-                <ChooseItem
+                        itemprop="item"
+                    />
+                    <meta itemprop="position" content="4" />
+                </div>
+                <div itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                    <ChooseItem
                         text="Современное оборудование"
                         sub="Гарантируем точность и качество нанесения покрытий."
                         image="/images/icons/equipments-icon.svg"
-                />
+                        itemprop="item"
+                    />
+                    <meta itemprop="position" content="5" />
+                </div>
             </div>
         </div>
-
-        <p class="choose__descr">
-            Доверьте свой проект профессионалам! С нами ваша продукция будет защищена и выглядит великолепно долгие годы. Свяжитесь с нами
-            сегодня, и мы проконсультируем вас по всем вопросам!
-        </p>
     </section>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 
-// Ссылки на необходимые элементы
 const chooseTitle = ref(null);
 const chooseText = ref(null);
 const chooseItems = ref(null);
@@ -58,7 +76,6 @@ onMounted(() => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                // Добавляем задержку для каждого элемента
                 setTimeout(() => {
                     entry.target.classList.add('choose__visible');
                 }, index * 200);
@@ -77,7 +94,7 @@ onMounted(() => {
     }
 
     if (chooseItems.value) {
-        const items = chooseItems.value.querySelectorAll('.ChooseItem');
+        const items = (chooseItems.value as HTMLElement).querySelectorAll('.ChooseItem');
         items.forEach((item, index) => {
             observer.observe(item);
         });

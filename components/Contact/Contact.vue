@@ -5,7 +5,7 @@
 
             <div class="contact__content">
                 <div class="contact__content-text">
-                    <h2 class="contact__content-text-title">TeploColor – это не только про качество,
+                    <h2 class="contact__content-text-title">TeploColour – это не только про качество,
                         но и про клиентоориентированность</h2>
                     <p class="contact__content-text-descr">
                         Оставьте ваши контактные данные и наши менеджеры свяжутся с вами в удобное для вас время для предоставления консультации

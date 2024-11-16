@@ -1,27 +1,27 @@
 <template>
-    <footer class="footer">
+    <footer class="footer" id="#footer">
         <div class="footer__wrapper">
             <div class="footer__container">
                 <div class="footer__contacts">
                     <h3 class="footer__title">
                         Контакты
                     </h3>
-                    <div class="footer__contacts-address">
+                    <div class="footer__contacts-address" itemprop="address">
                         Москва, ул. Иванова, д.23
                     </div>
                     <NuxtLink to="#" class="footer__contacts-map">открыть на карте</NuxtLink>
                     <div class="footer__contacts-works">
                         <h5 class="footer__contacts-works-title">Время работы</h5>
-                        <p class="footer__contacts-works-time">пн-пт с 9:00 до 18:00</p>
+                        <time class="footer__contacts-works-time">пн-пт с 9:00 до 18:00</time>
                     </div>
                     <div class="footer__contacts-phone">
                         <a href="tel:+7 (495) 123-45-67">+7 (495) 123-45-67</a>
                     </div>
                     <div class="footer__contacts-social">
-                        <NuxtLink to="#" class="footer__contacts-social-link inst"></NuxtLink>
-                        <NuxtLink to="#" class="footer__contacts-social-link fb"></NuxtLink>
-                        <NuxtLink to="#" class="footer__contacts-social-link whatsapp"></NuxtLink>
-                        <NuxtLink to="#" class="footer__contacts-social-link tg"></NuxtLink>
+                        <NuxtLink to="#" class="footer__contacts-social-link inst" aria-label="Instagram"></NuxtLink>
+                        <NuxtLink to="#" class="footer__contacts-social-link fb" aria-label="Facebook"></NuxtLink>
+                        <NuxtLink to="#" class="footer__contacts-social-link whatsapp" aria-label="WhatsApp"></NuxtLink>
+                        <NuxtLink to="#" class="footer__contacts-social-link tg" aria-label="Telegram"></NuxtLink>
                     </div>
                 </div>
                 <div class="footer__services">
@@ -73,14 +73,13 @@
             <div class="footer__copyright-text">
                 © 2024 Все права защищены
             </div>
-            <div class="footer__copyright-link">teplocolor.ru</div>
+            <div class="footer__copyright-link">TeploColour.ru</div>
         </div>
 
     </footer>
 </template>
 
 <script setup lang="ts">
-
 </script>
 
 <style scoped lang="scss">

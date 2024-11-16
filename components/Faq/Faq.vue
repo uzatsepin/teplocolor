@@ -1,83 +1,62 @@
 <template>
-    <section class="faq" ref="faq">
+    <section class="faq" ref="faq" id="faq" itemscope itemtype="https://schema.org/FAQPage">
         <div class="faq__container">
             <h2 class="faq__title" ref="faqTitle">Частые вопросы</h2>
 
             <div class="faq__content">
-                <div class="faq__content-items" ref="faqItems">
-                    <FaqItem v-for="question in questions" :key="question.id" :question="question.question" :answer="question.answer"/>
+                <div class="faq__content-items" ref="faqItems" role="list">
+                    <FaqItem 
+                        v-for="question in questions" 
+                        :key="question.id" 
+                        :question="question.question" 
+                        :answer="question.answer"
+                        itemscope 
+                        itemtype="https://schema.org/Question"
+                    />
                 </div>
                 <div class="faq__content-img" ref="faqImg">
-                    <NuxtImg src="/images/faq-painting.jpg" alt="Teplocolor – Часто задаваемые вопросы"/>
+                    <NuxtImg 
+                        src="/images/faq-painting.jpg" 
+                        alt="TeploColour – Часто задаваемые вопросы"
+                        loading="lazy"
+                    />
                 </div>
             </div>
         </div>
     </section>
 </template>
-
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+defineProps<{ questions: { id: number; question: string; answer: string }[] }>();
 
-const questions = [
-    {
-        id: 1,
-        question: "Что такое порошковая покраска и чем она отличается от обычной?",
-        answer: "Порошковая покраска — это процесс нанесения на поверхность порошкового состава, который затем запекается при высокой температуре. В отличие от обычной жидкой краски, порошковое покрытие не требует растворителей, обладает большей долговечностью и устойчивостью к механическим повреждениям."
-    },
-    {
-        id: 2,
-        question: "Почему порошковая покраска идеальна для теплиц?",
-        answer: "Порошковая покраска обеспечивает надежную защиту металлических конструкций от коррозии, ультрафиолетового излучения и воздействия влаги, что особенно важно для теплиц, которые подвергаются воздействию агрессивных внешних факторов."
-    },
-    {
-        id: 3,
-        question: "Какие цвета доступны для порошковой покраски теплиц?",
-        answer: 'Мы предлагаем широкий спектр цветов на основе международных цветовых стандартов (например, RAL). Вы можете выбрать любой оттенок, который лучше всего подходит для вашего проекта, включая как матовые, так и глянцевые покрытия.'
-    },
-    {
-        id: 4,
-        question: "Насколько долговечна порошковая покраска для теплиц?",
-        answer: 'Порошковое покрытие служит значительно дольше обычных методов окраски. Средний срок службы такого покрытия для теплиц составляет 10–15 лет, в зависимости от условий эксплуатации и ухода за конструкцией.'
-    },
-    {
-        id: 5,
-        question: "Можно ли нанести порошковую краску на старые или ржавые конструкции теплиц?",
-        answer: 'Перед нанесением порошковой краски металлические поверхности должны быть очищены и подготовлены. Это включает удаление ржавчины, грязи и старых покрытий. Мы также предлагаем услуги подготовки металла, чтобы обеспечить идеальное нанесение краски и долговечность покрытия.'
-    }
-]
 
 const faqTitle = ref(null);
-const faqItems = ref(null);
+const faqItems = ref<HTMLElement | null>(null);
 const faqImg = ref(null);
 
 onMounted(() => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                // Задержка для плавного появления
                 setTimeout(() => {
                     entry.target.classList.add('faq__visible');
-                }, index * 200); // Добавляем задержку для каждого элемента
+                }, index * 200);
             } else {
                 entry.target.classList.remove('faq__visible');
             }
         });
     });
 
-    // Наблюдаем за заголовком
     if (faqTitle.value) {
         observer.observe(faqTitle.value);
     }
 
-    // Наблюдаем за элементами вопросов
     if (faqItems.value) {
-        const items = faqItems.value.querySelectorAll('.FaqItem'); // Получаем все элементы FaqItem
+        const items = faqItems.value.querySelectorAll('.FaqItem');
         items.forEach((item, index) => {
-            observer.observe(item); // Наблюдаем за каждым вопросом
+            observer.observe(item); 
         });
     }
 
-    // Наблюдаем за изображением
     if (faqImg.value) {
         observer.observe(faqImg.value);
     }

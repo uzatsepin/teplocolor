@@ -1,55 +1,22 @@
 <template>
-    <section class="tags">
+    <section class="tags" itemscope itemtype="http://schema.org/WebPage">
         <div class="tags__container">
-            <div class="tags__items">
-                <TagsItem v-for="tag in tags" :key="tag.name" :name="tag.name" />
+            <h2 class="visually-hidden">Теги и ключевые слова</h2>
+            <div class="tags__items" role="list" aria-label="Список тегов">
+                <TagsItem 
+                    v-for="(tag, index) in tags" 
+                    :key="tag.name" 
+                    :name="tag.name"
+                    itemprop="keywords"
+                    role="listitem"
+                />
             </div>
         </div>
     </section>
 </template>
 
 <script setup lang="ts">
-const tags = [
-    {
-        name: "Покраска"
-    },
-    {
-        name: 'teplogarden'
-    },
-    {
-        name: 'теплицы'
-    },
-    {
-        name: 'заказать покраску'
-    },
-    {
-        name: 'покрасить теплицу'
-    },
-    {
-        name: 'Купить теплицу'
-    },
-    {
-        name: "покрасочная"
-    },
-    {
-        name: "покрасить"
-    },
-    {
-        name: "порошковая покраска"
-    },
-    {
-        name: "покраска"
-    },
-    {
-        name: "защита от коррозии"
-    },
-    {
-        name: "покраска для теплиц"
-    },
-    {
-        name: "профессиональная покраска"
-    }
-]
+defineProps<{ tags: { name: string }[] }>();
 </script>
 
 <style scoped lang="scss">
@@ -67,5 +34,16 @@ const tags = [
         flex-wrap: wrap;
         gap: 8px;
     }
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 </style>
